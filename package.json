@@ -1,0 +1,31 @@
+{
+  "name": "orders-db",
+  "version": "1.0.0",
+  "description": "orders database service",
+  "main": "index.js",
+  "scripts": {
+    "setup": "DEBUG=ordenes:* node setup.js",
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codehubteam-g1/orders.git"
+  },
+  "author": "Yonatan Cuervo (YOCC)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codehubteam-g1/orders/issues"
+  },
+  "homepage": "https://github.com/codehubteam-g1/orders#readme",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
+    "mysqlw": "^0.13.6",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.8.7"
+  }
+}
