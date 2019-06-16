@@ -1,12 +1,7 @@
-# orders-db
+# modulo orders aplicacion de dimicilios 
 
 ## Usage
 
-``` js
-const setupDatabase = require('platziverse-db')
+-Mysql
+-Node.js
 
-setupDabase(config).then(db => {
-  const { Agent, Metric } = db
-
-}).catch(err => console.error(err))
-```
