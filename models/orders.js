@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize')
 
+const Sequelize = require('sequelize')
 const setupDatabase = require('../lib/db')
 
-module.exports = function setupOrdersModel (config) {
+module.exports = function setupOrderModel (config) {
   const sequelize = setupDatabase(config)
 
   return sequelize.define('orders', {
@@ -22,7 +22,7 @@ module.exports = function setupOrdersModel (config) {
     order_status: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      defaultStatus: 1
+      defaultStatus: 0
     },
     creation_date: {
       type: Sequelize.TIME,
