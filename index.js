@@ -6,6 +6,8 @@ const setupDatabase = require('./lib/db')
 const setupOrderModel = require('./models/orders')
 const setupOrderProductsModel = require('./models/orderproducts')
 const setupOrderStatusModel = require('./models/orderStatus')
+//
+const setupOrder =require('./models/orders')
 
 module.exports = async function (config) {
   const sequelize = setupDatabase(config)
@@ -27,8 +29,8 @@ module.exports = async function (config) {
     await sequelize.sync({ force: true })
   }
 
-
-  const Order = {}
+  const Order = setupOrder (OrderModel)
+  //const Order = {}
   const OrderProducts = {}
   const OrderStatus = {}
 

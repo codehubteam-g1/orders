@@ -1,4 +1,0 @@
-node
-const setupDatabase = require('./')
-
-setupDatabase()

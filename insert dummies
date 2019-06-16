@@ -1,0 +1,8 @@
+insert into orders (user_id, delivery_person_id,order_status, creation_date, createdAt, updatedAt ) values(1000, 765, 1, '13:00:00', '9999-12-31 23:59:59', '9999-12-31 23:59:59');
+
+insert into orders (user_id, delivery_person_id,order_status, creation_date, createdAt, updatedAt ) values(20303, 7623, 0, '14:00:00', '9999-12-31 23:59:59', '9999-12-31 23:59:59');
+
+
+nmp run setup;
+
+node pruebas/pruebas

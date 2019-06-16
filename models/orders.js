@@ -7,7 +7,7 @@ module.exports = function setupOrdersModel (config) {
 
   return sequelize.define('orders', {
     id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER, autoIncrement: true,
       allowNull: false,
       primaryKey: true
     },

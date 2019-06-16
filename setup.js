@@ -17,6 +17,10 @@ async function setup () {
   await db(config).catch(handleFatalError)
 
   console.log('Success!')
+
+  //console.log('esto es una prueba')  
+
+
   process.exit(0)
 }
 

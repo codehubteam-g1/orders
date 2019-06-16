@@ -1,0 +1,10 @@
+mysql -u root -h localhost -ppassword
+
+use ordenes;
+
+insert into orders (user_id, delivery_person_id, order_status, creation_date, createdAt, updatedAt) values (1001,2001,3001,"12:45:03","2019-12-12","2019-12-12");
+
+ 
+
+
+
