@@ -20,9 +20,9 @@ async function run (){
     console.log(orders)
    
 
-    const order = await Order.findOrderByPk(2).catch(handleFatalError)
+    const order = await Order.findOrderByPk(18).catch(handleFatalError)
     console.log(order)
-
+/*
     const order1 = await Order.createOrder({
       user_id: 567,
       delivery_person_id: 2010,
@@ -33,14 +33,12 @@ async function run (){
     }).catch(handleFatalError)
     
     console.log(order1)
-
-/*
-    const upOrder = await Order.updateOrder({
-      updatedAt: Date.now()
-    },18).catch(handleFatalError)
-    
-    console.log(upOrder)
 */
+
+    const upOrder = await Order.updateOrder(order, 1)
+      
+    console.log(upOrder)
+
 }
 
 function handleFatalError (err) {
