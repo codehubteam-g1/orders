@@ -19,11 +19,6 @@ module.exports = function setupOrderModel (config) {
       type: Sequelize.INTEGER,
       allowNull: false
     },
-    order_status: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      defaultStatus: 0
-    },
     creation_date: {
       type: Sequelize.TIME,
       allowNull: false

@@ -5,7 +5,7 @@ const setupDatabase = require('../lib/db')
 module.exports = function setupOrderStatusModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('orderStatuses', {
+  return sequelize.define('orderStatus', {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -14,6 +14,10 @@ module.exports = function setupOrderStatusModel (config) {
     name: {
       type: Sequelize.STRING,
       allowNull: false
+    },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: true
     }
   })
 }

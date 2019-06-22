@@ -9,6 +9,7 @@ const setupOrderProductsModel = require('./models/orderproducts')
 const setupOrderStatusModel = require('./models/orderStatus')
 //
 const setupOrder =require('./lib/orders')
+const setupOrderProduct = require('./lib/orderproducts')
 
 module.exports = async function (config) {
   config = defaults(config, {
@@ -31,9 +32,10 @@ module.exports = async function (config) {
   const OrderStatusModel = setupOrderStatusModel(config)
 
   OrderModel.hasMany(OrderProductsModel)
-  OrderModel.hasOne(OrderStatusModel)
   OrderProductsModel.belongsTo(OrderModel)
-  OrderStatusModel.belongsTo(OrderModel)
+
+  OrderStatusModel.hasMany(OrderModel)
+  OrderModel.belongsTo(OrderStatusModel)
   //
 
   await sequelize.authenticate()
@@ -44,7 +46,7 @@ module.exports = async function (config) {
 
   const Order = setupOrder(OrderModel)
   //const Order = {}
-  const OrderProducts = {}
+  const OrderProducts = setupOrderProduct(OrderProductsModel)
   const OrderStatus = {}
 
   return {
