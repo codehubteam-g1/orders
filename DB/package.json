@@ -1,6 +1,7 @@
 {
   "name": "orders-db",
   "version": "1.0.0",
+  "private": true,
   "description": "orders database service",
   "main": "index.js",
   "scripts": {

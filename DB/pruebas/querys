@@ -1,8 +1,10 @@
 mysql -u root -h localhost -ppassword
 
-npm run setup
+
 use ordenes;
 node pruebas/pruebas.js
+npm run setup
+npm run start-dev
 
 insert into orders (user_id, delivery_person_id, orderStatusId, creation_date, createdAt, updatedAt)
  values (1001, 2002, 0, "12:45:03","2019-12-12","2019-12-12");
