@@ -39,11 +39,11 @@ module.exports = async function (config) {
   //
 
   await sequelize.authenticate()
-/*
+
   if (config.setup) {
-    await sequelize.sync({ force: true })
+    await sequelize.sync({ })
   }
-*/
+
   const Order = setupOrder(OrderModel)
   const OrderProducts = setupOrderProduct(OrderProductsModel)
   const OrderStatus = {}
