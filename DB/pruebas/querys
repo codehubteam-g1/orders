@@ -6,6 +6,8 @@ node pruebas/pruebas.js
 npm run setup
 npm run start-dev
 
+sudo lsof -i -P -n | grep :3000
+
 
 //stados
 
@@ -34,4 +36,15 @@ values (711, 4, 19,"2019-12-12","2019-12-12");
 insert into orderProducts (id, quantity, orderId, createdAt, updatedAt)
  values (798, 1, 15,"2010-12-15","2010-12-15");
 
+
+///////////////
+ {
+        "id": 1,
+        "user_id": 1001,
+        "delivery_person_id": 2002,
+        "creation_date": "12:45:03",
+        "createdAt": "2019-12-12T00:00:00.000Z",
+        "updatedAt": "2019-12-12T00:00:00.000Z",
+        "orderStatusId": 0
+}
 

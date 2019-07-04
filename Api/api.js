@@ -9,6 +9,9 @@ const api = asyncify(express.Router())
 
 let service, Orders, OrderProduct, OrderStatus
 
+api.use(express.json())
+api.use(express.urlencoded({extended: false}))
+
 api.use('*',  async (req, res, next)=>{
     if (!service){
         try{           
@@ -27,7 +30,7 @@ api.use('*',  async (req, res, next)=>{
 
 api.get('/orders', async (req, res, next)=>{
     let ord = []
-    console.log("entra")
+   // console.log("entra")
     try{
         ord = await Orders.findAllOrders()
     }catch(e){
@@ -53,6 +56,20 @@ api.get('/orderProduct', async (req, res)=>{
     if(!ord){
         return next(new Error("no products"))
     }
+    res.send({ord})
+})
+
+api.post('/new/orders', async (req, res, next)=>{
+    
+    console.log("crea")
+    console.log("NOooooooooooooooo", req.body)
+    let ord;
+    try{
+        ord = await Orders.createOrder(req.body) 
+    }catch(e){
+        return next(e)
+    }
+    
     res.send({ord})
 })
 module.exports = api
