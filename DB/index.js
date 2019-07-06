@@ -1,8 +1,6 @@
 'use strict'
 
 const setupDatabase = require('./lib/db')
-const defaults = require('defaults')
-
 //
 const setupOrderModel = require('./models/orders')
 const setupOrderProductsModel = require('./models/orderproducts')
@@ -12,17 +10,6 @@ const setupOrder =require('./lib/orders')
 const setupOrderProduct = require('./lib/orderproducts')
 
 module.exports = async function (config) {
-  config = defaults(config, {
-    dialect: 'sqlite',
-    pool: {
-      max: 10,
-      min: 0,
-      idle: 10000
-    },
-    query: {
-      raw: true
-    }
-  })
   const sequelize = setupDatabase(config)
 
   //
