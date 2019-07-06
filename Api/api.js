@@ -1,7 +1,8 @@
+
 const debug = require('debug')('ordenes:db:setup')
 const express = require('express')
 const asyncify = require('express-asyncify')
-const db = require('rappid-db')
+const db = require('../DB')
 
 
 const config = require('./config')
