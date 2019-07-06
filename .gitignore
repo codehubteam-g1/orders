@@ -1,1 +1,4 @@
-node_modules/
+DB/node_modules/
+Api/node_modules/
+Api/node_modules_host
+Api/package-lock.json

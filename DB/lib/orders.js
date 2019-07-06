@@ -23,14 +23,9 @@ module.exports = function setupOrder (OrderModel) {
       }
     }
     order.order_status= status
-    const currentOrder= order
     const updated = await OrderModel.update(order, cond)
     return updated 
-
-    //const updated = await OrderModel.update(order, cond)
-    //return updated ? AgentModel.findOne(cond) : existingAgent
-  }
-
+    }
   return {
     findAllOrders,
     findOrderByPk,

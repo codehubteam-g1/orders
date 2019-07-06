@@ -1,0 +1,50 @@
+mysql -u root -h localhost -ppassword
+
+
+use ordenes;
+node pruebas/pruebas.js
+npm run setup
+npm run start-dev
+
+sudo lsof -i -P -n | grep :3000
+
+
+//stados
+
+insert into orderStatuses (id, name, description, createdAt, updatedAt) values (0, "Sin crear", "orden no creada","2019-12-12","2019-12-12");
+insert into orderStatuses (id, name, description, createdAt, updatedAt) 
+values (1, "Acepado", "El estaurante esta preparando tu pedido","2019-12-12","2019-12-12");
+insert into orderStatuses (id, name, description, createdAt, updatedAt) 
+values (2, "En camino", "El domiciliario va hacia ti","2019-12-12","2019-12-12");
+insert into orderStatuses (id, name, description, createdAt, updatedAt) 
+values (3, "Recibido", "Recibido por el usuario","2019-12-12","2019-12-12");
+insert into orderStatuses (id, name, description, createdAt, updatedAt) 
+values (4, "Cancelado", ":(","2019-12-12","2019-12-12");
+
+insert into orders (user_id, delivery_person_id, orderStatusId, creation_date, createdAt, updatedAt) values (1001, 2002, 0, "12:45:03","2019-12-12","2019-12-12");
+insert into orders (user_id, delivery_person_id, orderStatusId, creation_date, createdAt, updatedAt) values (1001, 2003, 0, "12:45:03","2019-12-12","2019-12-12");
+insert into orders (user_id, delivery_person_id, orderStatusId, creation_date, createdAt, updatedAt) values (1003, 2004, 0, "12:45:03","2019-12-12","2019-12-12");
+
+
+insert into orderProducts ( quantity, orderId, createdAt, updatedAt) values ( 4, 1,"2019-12-12","2019-12-12");
+insert into orderProducts ( quantity, orderId, createdAt, updatedAt) values ( 2, 2,"2010-12-15","2010-12-15");
+insert into orderProducts ( quantity, orderId, createdAt, updatedAt) values ( 5, 3,"2019-12-12","2019-12-12");
+insert into orderProducts ( quantity, orderId, createdAt, updatedAt) values ( 7, 2,"2010-12-15","2010-12-15");
+
+insert into orderProducts (id, quantity, orderId, createdAt, updatedAt) 
+values (711, 4, 19,"2019-12-12","2019-12-12");
+insert into orderProducts (id, quantity, orderId, createdAt, updatedAt)
+ values (798, 1, 15,"2010-12-15","2010-12-15");
+
+
+///////////////
+ {
+        "id": 1,
+        "user_id": 1001,
+        "delivery_person_id": 2002,
+        "creation_date": "12:45:03",
+        "createdAt": "2019-12-12T00:00:00.000Z",
+        "updatedAt": "2019-12-12T00:00:00.000Z",
+        "orderStatusId": 0
+}
+
