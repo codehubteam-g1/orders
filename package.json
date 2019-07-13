@@ -1,0 +1,15 @@
+{
+  "name": "orders",
+  "version": "1.0.0",
+  "description": "Orders service of the rappi-clone app",
+  "main": "server.js",
+  "repository": "git@github.com:codehubteam-g1/orders.git",
+  "author": "Sergio Álvarez Gómez <sf.alvarez10@uniandes.edu.co>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.11.0",
+    "sequelize": "^5.10.0"
+  }
+}
