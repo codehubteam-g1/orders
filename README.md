@@ -1,7 +1,5 @@
-# modulo orders aplicacion de dimicilios 
+# Orders service of the rappi-clone app
 
-## Usage
+## Entrypoint
 
--Mysql
--Node.js
-
+server.js

@@ -11,7 +11,7 @@ const config = {
     host: process.env.DB_HOST || '',
     dialect: 'postgres',
     setup: true,
-    logging: false,
+    logging: console.log,
     define: {
         underscored: true,
         freezeTableName: true,
@@ -34,10 +34,10 @@ module.exports = async function () {
     const Order = SetupOrderModel(sequelize)
     const OrderProduct = SetupOrderProductModel(sequelize)
 
-    Order.hasMany(OrderProduct, { onDelete: 'CASCADE' })
+    Order.hasMany(OrderProduct, { onDelete: 'CASCADE' , as: 'OrderProducts'})
     OrderProduct.belongsTo(Order)
 
-    if (config.setup) sequelize.sync({ force: true })
+    if (config.setup) sequelize.sync({ force: true, logging: console.log })
 
     return {
         Order,

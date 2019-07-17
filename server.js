@@ -2,7 +2,7 @@
 
 const Express = require('express');
 const app = Express();
-const PORT = 3000;
+const PORT = 5001;
 const database = require('./db/database')();
 const routes = require('./routes/routes')(database)
 
@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(Express.json());
-app.use(Express.urlencoded({ extended: false }));
+app.use(Express.urlencoded({ extended: true }));
 
 app.use('/', routes);
 
@@ -31,7 +31,7 @@ app.use(function (err, req, res, next) {
     else {
         res.json({ errorMessage: 'Ocurrió un error en el servidor. Inténtalo de nuevo en un momento' });
         if (err.errors && err.errors[0]) console.log(err.errors[0].message)
-        else console.log(err)
+        // else console.log(err)
     }
 });
 

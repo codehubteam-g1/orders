@@ -5,17 +5,13 @@ const Sequelize = require('sequelize')
 module.exports = sequelize => {
 
   let orderProductModel = sequelize.define('orders_products', {
-    orderId: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
     productId: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      allowNull: false
     },
     quantity: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+      type: Sequelize.STRING,
+      allowNull: false
     }
   })
 

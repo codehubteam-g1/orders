@@ -6,11 +6,23 @@ const ErrorHandler = require('../db/lib/errorHandler')
 module.exports = database => {
   const router = Express.Router();
 
+  router.get('/getUnassignedOrders', async (req, res, next) => {
+    try {
+      const db = await database;
+      let orders = await db.Order.findAll({ where: { deliveryPersonId: null } })
+      res.json({
+        orders
+      })
+    } catch (error) {
+      ErrorHandler(error, next)
+    }
+  })
+
   router.get('/getOrderByOrderId/:id', async (req, res, next) => {
     try {
-      let id = req.params.id
+      let orderId = req.params.id
       const db = await database;
-      let order = await db.Order.findByPk(id)
+      let order = await db.Order.findByPk(orderId)
       res.json({
         order
       })
@@ -60,14 +72,57 @@ module.exports = database => {
 
   router.post('/createOrder', async (req, res, next) => {
     try {
+      if (req.headers.usertype != 'client') {
+        throw ({ error: new Error('Debes estar logeado como cliente para poder crear una orden'), status: 401 })
+      }
+      if(!req.body.products){
+        throw ({ error: new Error('La orden no tiene productos'), status: 401 })
+      }
+
       const db = await database;
       let body = req.body
-      body.userId = req.user.id
-      let answer = await db.Order.create(body)
-      console.log(answer)
+      body.userId = req.headers.id
+      let order = await db.Order.create(body)
+
+      req.body.products.forEach(async product => {
+        await order.createOrderProduct(product)
+      });
+
       res.json({
         success: true
       });
+    } catch (error) {
+      ErrorHandler(error, next)
+    }
+  })
+
+  router.get('/getOrderProducts/:id', async (req, res, next) => {
+    try {
+      let id = req.params.id
+      const db = await database;
+      let order = await db.Order.findByPk(id)
+      let products = await order.getOrderProducts()
+      res.json({
+        products
+      })
+    } catch (error) {
+      ErrorHandler(error, next)
+    }
+  })
+
+  router.post('/changeOrderStatus/:id', async (req, res, next) => {
+    try {
+      if (req.headers.usertype != 'delivery person') {
+        throw ({ error: new Error('Debes estar logeado como domiciliario para poder cambiar el estado de una orden'), status: 401 })
+      }
+
+      let orderId = req.params.id
+      const db = await database;
+      let order = await db.Order.findByPk(orderId)
+      await order.update({status: req.body.status})
+      res.json({
+        success: true
+      })
     } catch (error) {
       ErrorHandler(error, next)
     }

@@ -15,7 +15,7 @@ module.exports = sequelize => {
     },
     deliveryPersonId: {
       type: Sequelize.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     userAddressId: {
       type: Sequelize.INTEGER,
@@ -26,8 +26,14 @@ module.exports = sequelize => {
       allowNull: false
     },
     status: {
-      type: Sequelize.ENUM('El restaurante está preparando tu comida', 'El domiciliario está esperando tu orden en el restaurante', 'El domiciliario esta en camino a tu dirección', 'El domiciliario esta en la puerta de tu casa', 'Pedido entregado'),
-      allowNull: false
+      type: Sequelize.INTEGER,
+      // 'El restaurante está preparando tu comida', 'El domiciliario está esperando tu orden en el restaurante', 'El domiciliario esta en camino a tu dirección', 'El domiciliario esta en la puerta de tu casa', 'Pedido entregado'
+      allowNull: false,
+      defaultValue: 1,
+      validate: {
+        max: 5,
+        min: 1,
+      }
     }
   })
 
