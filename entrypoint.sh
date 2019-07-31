@@ -14,7 +14,7 @@ if [[ $STOPPED !=  "true" ]]; then
 		npm install
 	fi
 
-	if [[ $ = "true" ]]; then
+	if [[ $DB_SETUP = "true" ]]; then
 		echo "FORCE RESETTING SEQUELIZE DATABASE AND RUNNING SERVER"
 		node server.js
 	else
@@ -22,5 +22,3 @@ if [[ $STOPPED !=  "true" ]]; then
 		node server.js
 	fi
 fi
-
-
